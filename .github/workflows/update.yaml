@@ -1,0 +1,23 @@
+name: Update image tag from dispatch
+
+on:
+  repository_dispatch:
+    types: [update-image]
+
+jobs:
+  update-tag:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout GitOps repo
+      uses: actions/checkout@v3
+
+    - name: Update image tag in deployment.yaml
+      run: |
+        sed -i "s|image: jazibumer/scd_proj_image:.*|image: jazibumer/scd_proj_image:${{ github.event.client_payload.image_tag }}|g" k8s/deployment.yaml
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git commit -am "Update image tag to ${{ github.event.client_payload.image_tag }}"
+        git push
