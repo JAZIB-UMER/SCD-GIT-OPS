@@ -8,10 +8,10 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: localhost  # <-- Replace with your domain or use localhost for Minikube
+    - host: localhost
       http:
         paths:
-          - path: /reposhield/?(.*)
+          - path: /reposhield
             pathType: Prefix
             backend:
               service:
