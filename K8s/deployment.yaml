@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: reposhield
-          image: jazibumer/scd_proj_image:8b461c0-dev-kubernetes
+          image: jazibumer/scd_proj_image:76570d5-dev-kubernetes
           ports:
             - containerPort: 8081
           resources:
