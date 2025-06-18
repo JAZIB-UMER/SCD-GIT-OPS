@@ -1,21 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: reposhield-ingress2
-  namespace: scdproject2
+  name: regex-rewrite
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/strip-prefix: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
-  ingressClassName: nginx
   rules:
-    - host: localhost
-      http:
-        paths:
-          - path: /reposhield
-            pathType: Prefix
-            backend:
-              service:
-                name: reposhield-service2
-                port:
-                  number: 80
+  - host: localhost
+    http:
+      paths:
+      - path: /reposhield(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: reposhield-service
+            port:
+              number: 80
