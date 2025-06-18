@@ -1,19 +1,21 @@
+# Simple ingress for testing - replace your current one
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: regex-rewrite
+  name: reposhield-simple-test
+  namespace: scdproject2
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
   - host: localhost
     http:
       paths:
-      - path: /reposhield(/|$)(.*)
-        pathType: ImplementationSpecific
+      - path: /reposhield
+        pathType: Prefix
         backend:
           service:
-            name: reposhield-service
+            name: reposhield-service2
             port:
               number: 80
