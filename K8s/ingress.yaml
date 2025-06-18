@@ -12,7 +12,7 @@ spec:
   - host: localhost
     http:
       paths:
-      - path: /reposhield
+      - path: /staging
         pathType: Prefix
         backend:
           service:
