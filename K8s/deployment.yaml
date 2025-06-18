@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reposhield-deployment
-  namespace: scdproject
+  name: reposhield-deployment2
+  namespace: scdproject2
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: reposhield
+      app: reposhield2
   template:
     metadata:
       labels:
-        app: reposhield
+        app: reposhield2
     spec:
       containers:
-        - name: reposhield
+        - name: reposhield2
           image: jazibumer/scd_proj_image:2ef9e8d-staging-kubernetes
           ports:
-            - containerPort: 8081
+            - containerPort: 8082
           resources:
             requests:
               memory: "256Mi"
