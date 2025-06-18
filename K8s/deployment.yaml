@@ -17,7 +17,7 @@ spec:
         - name: reposhield2
           image: jazibumer/scd_proj_image:2ef9e8d-staging-kubernetes
           ports:
-            - containerPort: 8082
+            - containerPort: 8081
           resources:
             requests:
               memory: "256Mi"
