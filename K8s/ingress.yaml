@@ -5,6 +5,7 @@ metadata:
   namespace: scdproject2
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/strip-prefix: "true"
 spec:
   ingressClassName: nginx
   rules:
